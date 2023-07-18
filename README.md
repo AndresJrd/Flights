@@ -6,6 +6,14 @@ curl --location 'http://localhost:8080/v1/flights'
 
 curl --location 'http://localhost:8080/v1/flights/mocked'
 
+Para el ejercicio del vuelo las oportunidades de mejora son las siguientes:
+- Debería contar con circuit breaker para evitar consultar un recurso caído.
+- Podría contar con algún mecanismo de resiliencia como reintentos en las consultas a recursos externos.
+- Podría dotar de una caché con un TTL, si estamos dispuestos a contar con un delay en la actualización de la información sobre vuelos.
+- No se manejan todos los errores posibles que pueden generarse en la aplicación.
+- Podría agregar Swagger para disponibilizar información sobre la api.
+- Dar mayor cobertura en los test.
+
 
 # Water
 
