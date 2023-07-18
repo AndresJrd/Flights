@@ -16,9 +16,11 @@ Para el ejercicio del vuelo las oportunidades de mejora son las siguientes:
 
 
 # Water
+![Captura de Pantalla 2023-07-18 a la(s) 08 36 36](https://github.com/AndresJrd/Flights/assets/41649546/dd23e577-56f6-45b9-b827-5e8ebd34f043)
 
 
-<img width="1029" alt="Screenshot 2023-07-17 at 1 47 47 PM" src="https://github.com/AndresJrd/Flights/assets/41649546/f8b8490e-f1c8-4c68-8903-46ae0c4d61b5">
+
+
 
 Solo plantear la solución.
 
