@@ -13,6 +13,8 @@ import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -63,5 +65,47 @@ class FlightControllerTest {
             .andDo(MockMvcResultHandlers.print())
             .andExpect(status().isNotFound)
             .andReturn()
+    }
+
+    @Test
+    fun getMockedFlightsAirlineQueryParam() {
+        // given
+        val airline = "United Airlines"
+        val uri = "/v1/flights/mocked?airline=$airline"
+
+        // when
+        val result = this.mockMvc.perform(
+            MockMvcRequestBuilders.get(uri)
+        )
+            .andDo(MockMvcResultHandlers.print())
+            .andExpect(status().isOk)
+            .andReturn().response.contentAsString
+
+        // then
+        val flights: List<FlightDto> = objectMapper.readValue(result, object : TypeReference<List<FlightDto>>() {})
+        assertEquals(flights.size, 2)
+        assertTrue(flights.all { it.airline == airline })
+    }
+
+    @Test
+    fun getMockedFlightsAirlineAndDepartureQueryParam() {
+        // given
+        val airline = "United Airlines"
+        val departure = "2019-10-15T20:00:00.000Z"
+        val departureDateTime = LocalDateTime.parse(departure, DateTimeFormatter.ISO_DATE_TIME)
+        val uri = "/v1/flights/mocked?airline=$airline&departureDateTime=$departure"
+
+        // when
+        val result = this.mockMvc.perform(
+            MockMvcRequestBuilders.get(uri)
+        )
+            .andDo(MockMvcResultHandlers.print())
+            .andExpect(status().isOk)
+            .andReturn().response.contentAsString
+
+        // then
+        val flights: List<FlightDto> = objectMapper.readValue(result, object : TypeReference<List<FlightDto>>() {})
+        assertEquals(flights.size, 1)
+        assertTrue(flights.all { it.departureDateTime == departureDateTime })
     }
 }
