@@ -6,6 +6,10 @@ curl --location 'http://localhost:8080/v1/flights'
 
 curl --location 'http://localhost:8080/v1/flights/mocked'
 
+curl --location 'http://localhost:8080/v1/flights/mocked?airline=United%20Airlines'
+
+curl --location 'http://localhost:8080/v1/flights/mocked?airline=United%20Airlines&departureDateTime=2019-10-15T20%3A00%3A00.000Z'
+
 Para el ejercicio del vuelo las oportunidades de mejora son las siguientes:
 - Debería contar con circuit breaker para evitar consultar un recurso caído.
 - Podría contar con algún mecanismo de resiliencia como reintentos en las consultas a recursos externos.
@@ -13,6 +17,13 @@ Para el ejercicio del vuelo las oportunidades de mejora son las siguientes:
 - No se manejan todos los errores posibles que pueden generarse en la aplicación.
 - Podría agregar Swagger para disponibilizar información sobre la api.
 - Dar mayor cobertura en los test.
+
+<img width="750" alt="Captura de Pantalla 2023-07-18 a la(s) 11 03 29" src="https://github.com/AndresJrd/Flights/assets/41649546/426b5e51-e9ff-40d4-b57c-ff027bd85297">
+<img width="761" alt="Captura de Pantalla 2023-07-18 a la(s) 11 03 38" src="https://github.com/AndresJrd/Flights/assets/41649546/affce359-4ed2-4fdd-bfb1-bf407f0c7431">
+
+
+
+
 
 
 # Water
